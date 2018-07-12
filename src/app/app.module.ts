@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//Routs
+import { AppRouting } from "./app.routes";
 
+//Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,7 +21,8 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     ProductItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
