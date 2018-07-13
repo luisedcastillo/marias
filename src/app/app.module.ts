@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from "@angular/http";
+
 //Routs
 import { AppRouting } from "./app.routes";
 
@@ -10,6 +12,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { AboutComponent } from './components/about/about.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+
+//Services
+import { InfoService } from "./services/info.service"
 
 @NgModule({
   declarations: [
@@ -22,9 +27,12 @@ import { ProductItemComponent } from './components/product-item/product-item.com
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     AppRouting
   ],
-  providers: [],
+  providers: [
+    InfoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
