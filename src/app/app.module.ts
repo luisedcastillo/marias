@@ -15,6 +15,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 
 //Services
 import { InfoService } from "./services/info.service"
+import { TeamService } from "./services/team.service"
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InfoService } from "./services/info.service"
     AppRouting
   ],
   providers: [
-    InfoService
+    InfoService,
+    TeamService
   ],
   bootstrap: [AppComponent]
 })
