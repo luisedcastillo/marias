@@ -17,8 +17,10 @@ export class ProductService {
     if (this.products.length === 0) {
       this.http.get('https://joyeriasmaria-web.firebaseio.com/products-idx.json')
         .subscribe(data => {
-          this.loaded = true;
-          this.products = data.json();
+          setTimeout(() => {
+            this.loaded = true;
+            this.products = data.json();
+          }, 1500);
         });
     }
   }
