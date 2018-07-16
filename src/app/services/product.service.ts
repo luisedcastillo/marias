@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 })
 export class ProductService {
 
-  proucts: any[] = [];
+  products: any[] = [];
   loaded = false;
 
   constructor(private http: Http) {
@@ -14,11 +14,11 @@ export class ProductService {
   }
 
   public LoadProducts() {
-    if (this.proucts.length === 0) {
+    if (this.products.length === 0) {
       this.http.get('https://joyeriasmaria-web.firebaseio.com/products-idx.json')
         .subscribe(data => {
           this.loaded = true;
-          this.proucts = data.json();
+          this.products = data.json();
         });
     }
   }
