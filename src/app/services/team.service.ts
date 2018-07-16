@@ -18,7 +18,6 @@ export class TeamService {
     .subscribe(data => {
        this.team = data.json();
        this.loaded = true;
-       console.log(this.team);
     });
    }
 }

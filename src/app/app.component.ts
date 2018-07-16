@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { InfoService } from "./services/info.service"
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,8 @@ import { InfoService } from "./services/info.service"
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  constructor(public infoService:InfoService){
+
+  constructor() {
 
   }
 }
