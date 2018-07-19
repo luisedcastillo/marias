@@ -17,6 +17,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { InfoService } from './services/info.service';
 import { TeamService } from './services/team.service';
 import { ProductService } from './services/product.service';
+import { SearchMainComponent } from './components/search-main/search-main.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductService } from './services/product.service';
     FooterComponent,
     MainComponent,
     AboutComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SearchMainComponent
   ],
   imports: [
     BrowserModule,

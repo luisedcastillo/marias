@@ -24,4 +24,8 @@ export class ProductService {
         });
     }
   }
+
+  public LoadProductById(cod: string) {
+    return this.http.get(`https://joyeriasmaria-web.firebaseio.com/products/${ cod }.json`);
+  }
 }

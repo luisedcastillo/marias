@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -7,10 +8,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductItemComponent {
 
-  constructor(private route: ActivatedRoute) {
+  product: any = undefined;
+  cod: string = undefined;
+
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService) {
+
     route.params.subscribe(params => {
-      console.log(params);
-      console.log(params['id']);
+      this.cod = params['id'];
+
+      productService.LoadProductById(this.cod)
+                    .subscribe(response => {
+                      this.product = response.json();
+                    });
     });
   }
 
