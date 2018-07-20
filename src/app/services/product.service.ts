@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { resolve } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +35,7 @@ export class ProductService {
   }
 
   public LoadProductByFilter(filter: string) {
-    console.log('Buscando producto');
-    console.log(this.products.length);
+
     if (this.products.length === 0) {
       this.LoadProducts().then(() => {
         this.SearchProductsByFilter(filter);
@@ -55,7 +53,7 @@ export class ProductService {
     this.products.forEach(pro => {
       if (pro.categoria.indexOf(filter) >= 0
           || pro.titulo.toLowerCase().indexOf(filter) >= 0) {
-            console.log(pro);
+
             this.filteredProducts.push(pro);
       }
     });

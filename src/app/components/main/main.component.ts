@@ -7,7 +7,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class MainComponent {
 
-  constructor(private productService: ProductService) {
+  constructor(public productService: ProductService) {
 
   }
 

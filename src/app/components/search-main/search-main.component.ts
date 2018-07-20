@@ -10,8 +10,8 @@ export class SearchMainComponent {
 
   filter: string = undefined;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private productService: ProductService) {
+  constructor(public activatedRoute: ActivatedRoute,
+              public productService: ProductService) {
 
       activatedRoute.params.subscribe(param => {
       this.filter = param['filter'];
