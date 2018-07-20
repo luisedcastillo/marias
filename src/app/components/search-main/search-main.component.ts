@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-search-main',
@@ -6,6 +8,16 @@ import { Component} from '@angular/core';
 })
 export class SearchMainComponent {
 
-  constructor() { }
+  filter: string = undefined;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private productService: ProductService) {
+
+      activatedRoute.params.subscribe(param => {
+      this.filter = param['filter'];
+
+      productService.LoadProductByFilter(this.filter);
+    });
+  }
 
 }

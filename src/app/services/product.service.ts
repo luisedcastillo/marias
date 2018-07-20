@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { resolve } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Http } from '@angular/http';
 export class ProductService {
 
   products: any[] = [];
+  filteredProducts: any[] = [];
   loaded = false;
 
   constructor(private http: Http) {
@@ -14,15 +16,49 @@ export class ProductService {
   }
 
   public LoadProducts() {
+
+    // tslint:disable-next-line:no-shadowed-variable
+    const promise = new Promise((resolve, _reject) => {
+
+      if (this.products.length === 0) {
+        this.http.get('https://joyeriasmaria-web.firebaseio.com/products-idx.json')
+          .subscribe(data => {
+            setTimeout(() => {
+              this.loaded = true;
+              this.products = data.json();
+              resolve();
+            }, 1500);
+          });
+      }
+    });
+
+    return promise;
+  }
+
+  public LoadProductByFilter(filter: string) {
+    console.log('Buscando producto');
+    console.log(this.products.length);
     if (this.products.length === 0) {
-      this.http.get('https://joyeriasmaria-web.firebaseio.com/products-idx.json')
-        .subscribe(data => {
-          setTimeout(() => {
-            this.loaded = true;
-            this.products = data.json();
-          }, 1500);
-        });
+      this.LoadProducts().then(() => {
+        this.SearchProductsByFilter(filter);
+      });
+    } else {
+      this.SearchProductsByFilter(filter);
     }
+  }
+
+  private SearchProductsByFilter(filter: string) {
+
+    this.filteredProducts = [];
+    filter = filter.toLowerCase();
+
+    this.products.forEach(pro => {
+      if (pro.categoria.indexOf(filter) >= 0
+          || pro.titulo.toLowerCase().indexOf(filter) >= 0) {
+            console.log(pro);
+            this.filteredProducts.push(pro);
+      }
+    });
   }
 
   public LoadProductById(cod: string) {
